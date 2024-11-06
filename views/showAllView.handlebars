@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>GroselhaCorp©</title>
+    <style>
+        body {
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            background: #000066;
+            background-image: linear-gradient(45deg, #000066 25%, #000099 25%, #000099 50%, #000066 50%, #000066 75%, #000099 75%, #000099 100%);
+            color: #FFFFFF;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #666666;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .search-form {
+            background: linear-gradient(to bottom, #4a4a4a, #2d2d2d);
+            padding: 15px;
+            border: 1px solid #666;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            background: #000;
+            border: 1px solid #666;
+            color: #00ff00;
+            padding: 5px 10px;
+            margin-right: 10px;
+            border-radius: 3px;
+        }
+
+        select {
+            background: #000;
+            color: #00ff00;
+            border: 1px solid #666;
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        input[type="submit"], button {
+            background: linear-gradient(to bottom, #666, #333);
+            color: #fff;
+            border: 1px solid #999;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 1px #000;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background: linear-gradient(to bottom, #999, #666);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.8);
+            margin-top: 20px;
+            border: 2px solid #666;
+        }
+
+        .table th {
+            background: linear-gradient(to bottom, #003366, #001933);
+            color: #00ffff;
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #666;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .table td {
+            padding: 8px;
+            border: 1px solid #444;
+            color: #00ff00;
+        }
+
+        .table tr:hover {
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        a {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+
+        .menu {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: linear-gradient(to bottom, #333, #000);
+            border: 1px solid #666;
+            border-radius: 5px;
+        }
+
+        .menu a {
+            margin-right: 15px;
+            color: #00ffff;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <menu class="menu">
+            <a href='#'>Lista</a>
+            <a href='http://localhost:3000/'>Cadastro</a>
+        </menu>
+        
+        <form action='/search' method='post' class="search-form">
+            <input type='text' name='pesquisa' placeholder='Nome, departamento...' />
+            <select name="filtro_departamento">
+                <option value="" hidden>Filtrar por...</option>
+                <option value='administrativo'>Administrativo</option>
+                <option value='designer'>Designer</option>
+                <option value='contabil'>Contábil</option>
+                <option value='fabrica'>Fábrica</option>
+            </select>
+            <input type='submit' value='Procurar' />
+        </form>
+
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th scope='col'>
+                        <form action='/orderById' method='post'>
+                            <input type='hidden' name='id' value='{{ascDesc}}' />
+                            <button type='submit'>#</button>
+                        </form>
+                    </th>
+                    <th scope='col'>
+                        <form action='/orderByNome' method='post'>
+                            <input type='hidden' name='nome' value='{{ascDesc}}' />
+                            <button type='submit'>Nome</button>
+                        </form>
+                    </th>
+                    <th scope='col'>
+                        <form action='/orderByBruto' method='post'>
+                            <input type='hidden' name='salario' value='{{ascDesc}}' />
+                            <button type='submit'>Salário Bruto</button>
+                        </form>
+                    </th>
+                    <th scope='col'>
+                        <form action='/orderByLiquido' method='post'>
+                            <input type='hidden' name='liquido' value='{{ascDesc}}' />
+                            <button type='submit'>Salário Líquido</button>
+                        </form>
+                    </th>
+                    <th scope='col'>
+                        <form action='/orderByDepartamento' method='post'>
+                            <input type='hidden' name='departamento' value='{{ascDesc}}' />
+                            <button type='submit'>Departamento</button>
+                        </form>
+                    </th>
+                    <th scope='col'> </th>
+                    <th scope='col'> </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each results_form}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{nome}}</td>
+                    <td>R${{salario}}</td>
+                    <td>R${{liquido}}</td>
+                    <td>{{departamento}}</td>
+                    <td><a href='/edit/{{id}}'>Editar</a></td>
+                    <td><a href='/delete/{{id}}'>Excluir</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

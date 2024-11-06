@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>GroselhaCorp©</title>
+    <style>
+        body {
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            background: #000066;
+            background-image: linear-gradient(45deg, #000066 25%, #000099 25%, #000099 50%, #000066 50%, #000066 75%, #000099 75%, #000099 100%);
+            color: #FFFFFF;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #666666;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .menu {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: linear-gradient(to bottom, #333, #000);
+            border: 1px solid #666;
+            border-radius: 5px;
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .menu a {
+            color: #00ffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+
+        .form-container {
+            background: linear-gradient(to bottom, #4a4a4a, #2d2d2d);
+            padding: 20px;
+            border: 1px solid #666;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #00ffff;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px #000;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            background: #000;
+            border: 1px solid #666;
+            color: #00ff00;
+            border-radius: 3px;
+            margin-top: 5px;
+        }
+
+        input[type="text"]:focus, select:focus {
+            border-color: #00ffff;
+            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+            outline: none;
+        }
+
+        button {
+            background: linear-gradient(to bottom, #666, #333);
+            color: #fff;
+            border: 1px solid #999;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 1px #000;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: linear-gradient(to bottom, #999, #666);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .title {
+            text-align: center;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        .mario-gif {
+            display: block;
+            margin: 20px auto 0;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            transition: transform 0.3s ease;
+            max-width: 480px;
+            width: 100%;
+            height: auto;
+        }
+
+        .mario-gif:hover {
+            transform: scale(1.05);
+        }
+
+        .gif-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .gif-credit {
+            color: #00ffff;
+            font-size: 12px;
+            margin-top: 10px;
+            opacity: 0.7;
+        }
+
+        .gif-credit a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+
+        .gif-credit a:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">GroselhaCorp©</h1>
+        
+        <menu class="menu">
+            <li><a href='http://localhost:3000/showAll'>Lista</a></li>
+            <li><a href='http://localhost:3000/'>Cadastro</a></li>
+        </menu>
+
+        <div class="form-container">
+            <form action='/' method='POST'>
+                <div class="form-group">
+                    <label>Nome:</label>
+                    <input type='text' name='nome' />
+                </div>
+
+                <div class="form-group">
+                    <label>Salário:</label>
+                    <input type='text' name='salario' />
+                </div>
+
+                <div class="form-group">
+                    <label>Departamento:</label>
+                    <select name='departamento'>
+                        <option value='selecionar' hidden>Selecionar</option>
+                        <option value='administrativo'>Administrativo</option>
+                        <option value='designer'>Designer</option>
+                        <option value='contabil'>Contábil</option>
+                        <option value='fabrica'>Fábrica</option>
+                    </select>
+                </div>
+
+                <button name='submit_button' type='submit' onclick='confirma()'>Cadastrar</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="gif-container">
+        <img src="https://media1.giphy.com/media/WZdlab0U3AkSc/giphy.gif" alt="Super Mario 64" class="mario-gif" />
+        <div class="gif-credit">
+            <a href="https://giphy.com/gifs/mario-super-64-WZdlab0U3AkSc">via GIPHY</a>
+        </div>
+    </div>
+</body>
+</html>
